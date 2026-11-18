@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1 id="myH1">Hobbitual</h1>
+
+        <div class="header-controls">
+            <button id="prev-month">&larr; Previous</button>
+            <span id="current-month">Month Year</span>
+            <button id="next-month">Next &rarr;</button>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Hobby Tracker Section-->
+        <section class="tracker-section">
+
+            <!-- Panel 1: My Hobbies -->
+            <aside class="tracker-panel sidebar">
+                <h2 class="section-title">My Hobbies</h2>
+
+                <div class="add-habit-form">
+                    <input type="text" id="habit-input" placeholder="e.g., Sketching, Guitar...">
+                    <button id="add-hobby">+ Add Hobby</button>
+                </div>
+
+                <ul id="habit-list"></ul>
+            </aside>
+
+            <!-- Panel 2: Matrix Overview -->
+            <aside class="tracker-panel matrix-aside">
+                <h2 class="section-title">
+                    Matrix Overview
+                    <span id="matrix-progress">0/0</span>
+                </h2>
+
+                <div class="table-scroll-wrapper">
+                    <table id="tracker-table">
+                        <thead>
+                            <tr id="table-header-row"></tr>
+                        </thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
+            </aside>
+
+            <!-- Panel 3: Daily Progress Graph -->
+            <aside class="tracker-panel graph-aside">
+                <h2 class="section-title">Daily Progress</h2>
+
+                <div class="chart-container">
+                    <canvas id="progress-chart"></canvas>
+                </div>
+            </aside>
+
+        </section>
+
+        <section class="monthly-overview-section">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="monthly">Monthly Overview</button>
+                <button class="tab-btn" data-tab="yearly">Yearly Comparison</button>
+            </div>
+
+            <!-- Tab 1: Monthly Overview Content -->
+            <div id="monthly-tab" class="tab-content active">
+                <h2 class="section-title">Monthly Summary</h2>
+                <div id="monthly-overview">
+                    <p class="overview-placeholder">Track your daily consistency across all habits this month.</p>
+                    <div id="monthly-stats" class="stats-grid">
+                        <!-- Dynamic stats injected by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Yearly Comparison Content -->
+            <div id="yearly-tab" class="tab-content">
+                <div class="yearly-header">
+                    <h2 class="section-title">12-Month Comparison (<span id="comparison-year">2026</span>)</h2>
+                    <div class="year-controls">
+                        <button id="prev-year">&larr; Prev Year</button>
+                        <button id="next-year">Next Year &rarr;</button>
+                    </div>
+                </div>
+                <div class="yearly-comparison-container">
+                    <div id="yearly-grid" class="yearly-grid">
+                        <!-- 12 months injected via JS -->
+                    </div>
+                    <div class="yearly-chart-container">
+                        <canvas id="yearly-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

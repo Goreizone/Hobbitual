@@ -1,0 +1,503 @@
+
+* {
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: #333333;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #444;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+#myH1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    margin: 0 0 15px 0;
+    color: #e0e0e0;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#current-month {
+    font-size: 1.2rem;
+    font-weight: bold;
+    min-width: 150px;
+    text-align: center;
+}
+
+button {
+    background-color: #4a4a4a;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #666;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* TRACKER SECTION */
+
+.tracker-section {
+    display: grid;
+    grid-template-columns: minmax(0, 0.5fr) minmax(0, 2fr) minmax(0, 1.5fr);
+    gap: 20px;
+
+    background-color: #262626;
+    padding: 20px;
+    border-radius: 12px;
+
+    align-items: stretch;
+    height: 480px;
+    min-height: 480px;
+}
+
+.tracker-panel {
+    background-color: #222;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #3a3a3a;
+
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-habit-form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    flex-direction: column;
+}
+
+#habit-input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: white;
+}
+
+#add-hobby {
+    background-color: #4caf50;
+}
+
+#add-hobby:hover {
+    background-color: #45a049;
+}
+
+#habit-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.habit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background-color: #333;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.habit-item.active {
+    border-color: #4caf50;
+    background-color: #2e3b2f;
+}
+
+.delete-btn {
+    background: transparent;
+    color: #ff6b6b;
+    padding: 2px 6px;
+    font-size: 0.9rem;
+}
+
+.delete-btn:hover {
+    background: rgba(255, 107, 107, 0.2);
+}
+
+/* DAILY PROGRESS GRAPH */
+
+.graph-aside {
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-container {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+}
+
+/* MATRIX TABLE */
+
+.matrix-aside {
+    display: flex;
+    flex-direction: column;
+}
+
+#matrix-progress {
+    font-size: 0.85rem;
+    font-weight: normal;
+    color: #e0e0e0;
+    margin-left: 8px;
+}
+
+.table-scroll-wrapper {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+
+    overflow: auto;
+
+    margin-top: 0;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+#tracker-table {
+    width: max-content;
+    min-width: 100%;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    text-align: center;
+    white-space: nowrap;
+    background-color: #262626;
+}
+
+#tracker-table th,
+#tracker-table td {
+    text-align: center;
+    padding: 8px 6px;
+    border-right: 1px solid #3a3a3a;
+    border-bottom: 1px solid #3a3a3a;
+    font-size: 0.9rem;
+}
+
+/* Sticky Hobby Name Column */
+
+#tracker-table th:first-child,
+#tracker-table td:first-child {
+    position: sticky;
+    left: 0;
+
+    background-color: #222;
+    z-index: 2;
+
+    text-align: left;
+    min-width: 80px;
+    width: 80px;
+    padding-left: 12px;
+}
+
+#tracker-table th:first-child {
+    z-index: 3;
+}
+
+#tracker-table th {
+    text-align: center;
+    background-color: #222;
+    color: #aaa;
+    font-size: 0.85rem;
+
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Day Cells */
+
+.check-cell {
+    width: 20px;
+    min-width: 20px;
+    height: 36px;
+
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    color: transparent;
+    font-weight: bold;
+}
+
+#tracker-table th:not(:first-child),
+#tracker-table td:not(:first-child) {
+    width: 20px;
+    min-width: 20px;
+    max-width: 20px;
+    text-align: center;
+}
+
+.check-cell:hover {
+    background-color: #3b3b3b;
+}
+
+.check-cell.completed {
+    background-color: #2e3b2f;
+    color: #4caf50;
+}
+
+/* MONTHLY OVERVIEW */
+
+.monthly-overview-section {
+    background-color: #262626;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.overview-placeholder {
+    color: #aaa;
+    margin-top: 0;
+    font-size: 0.95rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.stat-card {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-card h3 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: #bbb;
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+/* TABS */
+
+.tabs-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 12px;
+}
+
+.tab-btn {
+    background-color: #333;
+    color: #aaa;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.tab-btn:hover {
+    background-color: #444;
+    color: white;
+}
+
+.tab-btn.active {
+    background-color: #4caf50;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.subsection-title {
+    font-size: 1.1rem;
+    margin: 25px 0 12px 0;
+    color: #ccc;
+}
+
+/* YEARLY OVERVIEW */
+
+.yearly-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+    gap: 10px;
+}
+
+.month-card {
+    background-color: #333;
+    padding: 12px 8px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #444;
+    transition: transform 0.2s;
+}
+
+.month-card:hover {
+    transform: translateY(-2px);
+    border-color: #555;
+}
+
+.month-card.current-month {
+    border-color: #4caf50;
+    background-color: #2b382d;
+}
+
+.month-name {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.month-stats-val {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+.month-subtext {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+.yearly-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.yearly-header .section-title {
+    margin: 0;
+}
+
+.year-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.linear-summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.linear-summary-name {
+    font-weight: bold;
+    color: #fff;
+}
+
+.linear-summary-stats {
+    color: #4caf50;
+    font-size: 1rem;
+}
+
+.yearly-chart-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-top: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .tracker-section {
+        grid-template-columns: 220px minmax(0, 2fr) minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tracker-section {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .tracker-panel {
+        min-height: 250px;
+    }
+
+    .matrix-aside {
+        height: 400px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .header-controls {
+        flex-wrap: wrap;
+    }
+
+    .yearly-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
